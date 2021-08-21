@@ -2,30 +2,33 @@
 
 int binary_search(int* source_array, int count_elements, int item)
 {
-	int low, mid, high, guess;
-	low = 0;
-	mid = 0;
-	high = count_elements - 1;
-	guess = source_array[mid];
+	int low = 0;
+	int high = count_elements - 1;
 
 	while (high > low)
 	{
-		mid = (high + low) / 2;
-		guess = source_array[mid];
-		if (guess == item)
-			return mid;
-		if (guess > item)
-			high = mid;
+		int mid = (high + low) / 2;
+
+		if (item == source_array[mid])
+		{
+			printf("Value %d is located at index of %d", item, mid);
+			return 0;
+		}
+		else if (item > source_array[mid])
+		{
+			low = mid + 1;
+		}
 		else
-			low = mid;
+		{
+			high = mid - 1;
+		}
 	}
-	return 0;
+	return 1;
 }
 
 int main()
 {
-	int arr[5] = { 1, 3, 5, 7, 9 };
-	int item = 7;
-	printf("Position \"%d\" in array = %d", item, binary_search(arr, 5, item) + 1);
+	int source_arr[5] = { 1, 3, 5, 7, 9};
+	binary_search(source_arr, 5, 7);
 	return 0;
 }
