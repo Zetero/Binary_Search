@@ -1,4 +1,5 @@
 ﻿#include <stdio.h>
+#include <stdbool.h>
 
 int binary_search(int* source_array, int count_elements, int item)
 {
@@ -15,17 +16,16 @@ int binary_search(int* source_array, int count_elements, int item)
 		if (guess == item)
 			return mid;
 		if (guess > item)
-			high = mid;
+			high = mid - 1;
 		else
-			low = mid;
+			low = mid + 1;
 	}
 	return 0;
 }
 
 int main()
 {
-	int arr[5] = { 1, 3, 5, 7, 9 };
-	int item = 7;
-	printf("Position \"%d\" in array = %d", item, binary_search(arr, 5, item) + 1);
+	int arr[5] = {0, 0, 0, 0,0 };
+	Test_Binary_Search();
 	return 0;
 }
