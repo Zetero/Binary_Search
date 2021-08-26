@@ -73,15 +73,15 @@ int fact(int x)
 	return (x * fact(x - 1));
 }
 
-int subsequence_1_to_A(unsigned int A)
+int subsequence_1_to_A(unsigned int val, unsigned int max)
 {
-	if (A == 1)
+	if (val == max)
 	{
-		printf("%d", 1);
-		return 1;
+		printf("%d", max);
+		return max;
 	}
-	printf("%d ", A);
-	return subsequence_1_to_A(A - 1);
+	printf("%d ", val);
+	return subsequence_1_to_A(val + 1 , max);
 }
 
 void qsordRecursive(int* unsorted_array, int count_elemetns)
@@ -152,7 +152,7 @@ int main()
 	//printf("%d\n", fact(5));
 
 	//От 1 до А. Рекурсивная функция
-	subsequence_1_to_A(5);
+	subsequence_1_to_A(1,5);
 
 	//От A до B. Рекурсивная функция
 	return 0;
