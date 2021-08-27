@@ -52,16 +52,15 @@ void selection_sort(int* unsorted_array, int count_elements)
 	clock_t end = clock();
 	double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
 	printf("Function running time: %f\n", time_spent);
-	return 0;
 }
 
-void countdown_recursion(int i)
+int countdown_recursion(int i)
 {
 	printf("%d\n", i);
 	if (i <= 0)
 		return 0;
 	else
-		countdown_recursion(i - 1);
+		return countdown_recursion(i - 1);
 }
 
 int fact(int x)
@@ -73,7 +72,7 @@ int fact(int x)
 	return (x * fact(x - 1));
 }
 
-int subsequence_1_to_A(unsigned int val, unsigned int max)
+int helper_sub_1_to_A(unsigned int val, unsigned int max)
 {
 	if (val == max)
 	{
@@ -81,7 +80,64 @@ int subsequence_1_to_A(unsigned int val, unsigned int max)
 		return max;
 	}
 	printf("%d ", val);
-	return subsequence_1_to_A(val + 1 , max);
+	return helper_sub_1_to_A(val + 1, max);
+}
+
+void subsequence_1_to_A(unsigned int max)
+{
+	int i = 1;
+	helper_sub_1_to_A(i, max);
+}
+
+void subsequence_A_to_B(unsigned int A, unsigned int B)
+{
+	if (A == B)
+	{
+		printf("%d", A);
+	}
+	else if (A > B)
+	{
+		printf("%d ", A);
+		subsequence_A_to_B(A - 1, B);
+	}
+	else if (A < B)
+	{
+		printf("%d ", A);
+		subsequence_A_to_B(A + 1, B);
+	}
+}
+
+int FunctionAkkerman(unsigned int n, unsigned int m)
+{
+	if (n == 0)
+	{
+		return m + 1;
+	}
+	else if (n != 0 && m == 0)
+	{
+		return FunctionAkkerman(n - 1, 1);
+	}
+	else if (n > 0 && m > 0)
+	{
+		return FunctionAkkerman(n - 1, FunctionAkkerman(n, m - 1));
+	}
+	return 0;
+}
+
+void Exact_power_of_two(unsigned int val)
+{
+	if (val == 2)
+	{
+		printf("Yes\n");
+	}
+	else if (val > 2)
+	{
+		Exact_power_of_two(val / 2);
+	}
+	else if (val < 2)
+	{
+		printf("No\n");
+	}
 }
 
 void qsordRecursive(int* unsorted_array, int count_elemetns)
@@ -152,8 +208,16 @@ int main()
 	//printf("%d\n", fact(5));
 
 	//От 1 до А. Рекурсивная функция
-	subsequence_1_to_A(1,5);
+	//subsequence_1_to_A(5);
 
-	//От A до B. Рекурсивная функция
+	//От A до B (В обе стороны). Рекурсивная функция
+	//subsequence_A_to_B(1, 5);
+
+	//Функция Аккермана. Рекурсивная
+	//printf("%d\n",FunctionAkkerman(2, 2));
+
+	//Степень двойки. Рекурсия
+	//Exact_power_of_two(128);
+		
 	return 0;
 }

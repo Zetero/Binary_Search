@@ -1,4 +1,2 @@
 ﻿  Binary_Search.c
-d:\trashhh\алгоритмы\binary_search\binary_search\binary_search.c(55): warning C4098: selection_sort: функция типа "void", возвращающая значение
-d:\trashhh\алгоритмы\binary_search\binary_search\binary_search.c(62): warning C4098: countdown_recursion: функция типа "void", возвращающая значение
   Binary_Search.vcxproj -> D:\trashhh\Алгоритмы\Binary_Search\Debug\Binary_Search.exe
